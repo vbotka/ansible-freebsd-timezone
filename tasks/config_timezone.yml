@@ -1,0 +1,7 @@
+---
+
+- name: Configure timezone {{zoneinfo}}
+  shell: if [ $(cat /var/db/zoneinfo) != {{zoneinfo}} ]; then tzsetup {{zoneinfo}}; fi
+  register: timezone
+  notify: adjust CMOS
+  tags: config_timezone

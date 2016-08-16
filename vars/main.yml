@@ -1,0 +1,9 @@
+---
+# vars for freebsd-timezone
+
+#zoneinfo: "UTC"
+#zoneinfo: "Europe/London"
+#zoneinfo_path: "/usr/share/zoneinfo"
+#ntpdate_enable: "YES"
+#ntpdate_flags: "-b"
+#ntpd_sync_on_start: "NO"

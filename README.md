@@ -1,0 +1,68 @@
+freebsd-mailserver
+==================
+
+This role configures FreeBSD timezone.
+Tested with FreeBSD 10.3 at https://cloud.digitalocean.com
+
+
+Requirements
+------------
+
+No requiremenst.
+
+
+Variables
+---------
+
+TBD (Check the defaults).
+
+
+Workflow
+--------
+
+1) Change shell to /bin/sh.
+
+```
+ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
+```
+
+2) Install role.
+
+```
+ansible-galaxy install vbotka.ansible-freebsd-timezone
+```
+
+3) Fit variables.
+
+```
+~/.ansible/roles/vbotka.ansible-freebsd-timezone/vars/main.yml
+```
+
+4) Create playbook.
+
+```
+> cat ~/.ansible/playbooks/freebsd-timezone.yml
+---
+- hosts: mailserver
+  become: yes
+  become_method: sudo
+  roles:
+    - role: vbotka.ansible-freebsd-timezone
+```
+
+5) Configure the timezone.
+
+```
+ansible-playbook ~/.ansible/playbooks/freebsd-timzone.yml
+```
+
+License
+-------
+
+BSD
+
+
+Author Information
+------------------
+
+Vladimir Botka https://botka.link

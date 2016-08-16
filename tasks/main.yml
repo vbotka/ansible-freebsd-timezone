@@ -1,0 +1,8 @@
+---
+# tasks for freebsd-timezone
+
+- include: config_rc_conf.yml
+  tags: config_rc_conf
+
+- include: config_timezone.yml
+  tags: config_timezone
