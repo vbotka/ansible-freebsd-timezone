@@ -1,4 +1,4 @@
-freebsd-mailserver
+freebsd-timezone
 ==================
 
 This role configures FreeBSD timezone.
@@ -53,7 +53,7 @@ ansible-galaxy install vbotka.ansible-freebsd-timezone
 5) Configure the timezone.
 
 ```
-ansible-playbook ~/.ansible/playbooks/freebsd-timzone.yml
+ansible-playbook ~/.ansible/playbooks/freebsd-timezone.yml
 ```
 
 License
