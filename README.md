@@ -2,7 +2,8 @@ freebsd-timezone
 ==================
 
 This role configures FreeBSD timezone.
-Tested with FreeBSD 10.3 at https://cloud.digitalocean.com
+
+Tested with FreeBSD 10.3 at [https://cloud.digitalocean.com]
 
 
 Requirements
@@ -23,7 +24,7 @@ Workflow
 1) Change shell to /bin/sh.
 
 ```
-ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
+ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
 2) Install role.
