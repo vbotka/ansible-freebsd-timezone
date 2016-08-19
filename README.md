@@ -3,7 +3,7 @@ freebsd-timezone
 
 This role configures FreeBSD timezone.
 
-Tested with FreeBSD 10.3 at [https://cloud.digitalocean.com]
+Tested with FreeBSD 10.3 at [digitalocean.com](https://cloud.digitalocean.com)
 
 
 Requirements
@@ -67,3 +67,10 @@ Author Information
 ------------------
 
 Vladimir Botka https://botka.link
+
+
+References
+----------
+
+[How time is affected by the ntpd and /etc/localtime]
+(http://serverfault.com/questions/303517/how-time-is-affected-by-the-ntpd-and-etc-localtime)
