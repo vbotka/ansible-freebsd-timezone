@@ -1,5 +1,5 @@
-freebsd-timezone
-==================
+freebsd-timezone ![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-timezone.svg?branch=master)
+================
 
 This role configures FreeBSD timezone.
 
