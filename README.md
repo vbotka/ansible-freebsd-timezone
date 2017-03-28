@@ -4,9 +4,7 @@ freebsd-timezone
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-timezone.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-timezone)
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
-Ansible role. Configures FreeBSD timezone.
-
-https://galaxy.ansible.com/vbotka/ansible-freebsd-timezone/
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd-timezone/) Configures FreeBSD timezone.
 
 Tested with FreeBSD 10.3 at [digitalocean.com](https://cloud.digitalocean.com)
 
@@ -77,5 +75,4 @@ Author Information
 References
 ----------
 
-[How time is affected by the ntpd and /etc/localtime]
-(http://serverfault.com/questions/303517/how-time-is-affected-by-the-ntpd-and-etc-localtime)
+[How time is affected by the ntpd and /etc/localtime](http://serverfault.com/questions/303517/how-time-is-affected-by-the-ntpd-and-etc-localtime)
