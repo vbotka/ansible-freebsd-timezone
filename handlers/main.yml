@@ -11,3 +11,5 @@
 # variable when timezone changes occur
 - name: adjust CMOS
   command: adjkerntz -a
+
+# EOF

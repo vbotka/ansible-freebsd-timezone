@@ -6,3 +6,6 @@
 
 - include: config_timezone.yml
   tags: config_timezone
+
+# EOF
+...
