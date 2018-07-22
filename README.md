@@ -4,9 +4,7 @@ freebsd-timezone
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-timezone.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-timezone)
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd-timezone/) Configures FreeBSD timezone.
-
-Tested with FreeBSD 10.3 at [digitalocean.com](https://cloud.digitalocean.com)
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd-timezone/) FreeBSD. Configure timezone.
 
 
 Requirements
