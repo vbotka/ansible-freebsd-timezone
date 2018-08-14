@@ -6,7 +6,7 @@ zoneinfo: "UTC"
 #zoneinfo: "Europe/London"
 zoneinfo_path: "/usr/share/zoneinfo"
 
-# Run ntpdate to sync time on boot
+# Run ntpdate to sync date on boot
 ntpdate_enable: "YES"
 
 # -b Force the time to be stepped using the settimeofday(2) system call,
@@ -20,8 +20,9 @@ ntpd_sync_on_start: "NO"
 # rc.conf
 timezone_rcconf_backup: yes
 timezone_rcconf:
-  - { regexp: "ntpdate_enable",  val: "\"{{ ntpdate_enable }}\"" }
-  - { regexp: "ntpdate_flags",  val: "\"{{ ntpdate_flags }}\"" }
   - { regexp: "ntpd_sync_on_start",  val: "\"{{ ntpd_sync_on_start }}\"" }
+timezone_rcconf_ntpdate:
+  - { regexp: "ntpdate_flags",  val: "\"{{ ntpdate_flags }}\"" }
 
 # EOF
+...

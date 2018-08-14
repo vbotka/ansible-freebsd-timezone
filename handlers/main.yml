@@ -1,14 +1,16 @@
 ---
 # handlers for freebsd-timezone
     
-- name: enable ntpdate
+- name: enable and start ntpdate
   service:
     name: ntpdate
+    state: started
     enabled: yes
 
-- name: disable ntpdate
+- name: disable and stop ntpdate
   service:
     name: ntpdate
+    state: stopped
     enabled: no
 
 # update the local time CMOS clock and kernel machdep.adjkerntz
