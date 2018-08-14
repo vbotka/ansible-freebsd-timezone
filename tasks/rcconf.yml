@@ -15,6 +15,7 @@
     line: "{{ item.regexp }}={{ item.val }}"
     backup: "{{ timezone_rcconf_backup }}"
   loop: "{{ timezone_rcconf_ntpdate }}"
+  notify: restart ntpdate
 
 - name: Enable ntpdate
   lineinfile:

@@ -13,6 +13,12 @@
     state: stopped
     enabled: no
 
+- name: restart ntpdate
+  service:
+    name: ntpdate
+    state: restarted
+  when: ntpdate_enable|lower == "yes"
+
 # update the local time CMOS clock and kernel machdep.adjkerntz
 # variable when timezone changes occur
 - name: adjust CMOS
