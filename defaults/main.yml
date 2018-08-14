@@ -16,3 +16,12 @@ ntpdate_flags: "-b"
 
 # Sync time on ntpd startup
 ntpd_sync_on_start: "NO"
+
+# rc.conf
+timezone_rcconf_backup: yes
+timezone_rcconf:
+  - { regexp: "ntpdate_enable",  val: "\"{{ ntpdate_enable }}\"" }
+  - { regexp: "ntpdate_flags",  val: "\"{{ ntpdate_flags }}\"" }
+  - { regexp: "ntpd_sync_on_start",  val: "\"{{ ntpd_sync_on_start }}\"" }
+
+# EOF

@@ -5,11 +5,8 @@
     dest: "/etc/rc.conf"
     regexp: "^{{ item.regexp }}"
     line: "{{ item.regexp }}={{ item.val }}"
-    backup: yes
-  loop:
-    - { regexp: "ntpdate_enable",  val: "\"{{ ntpdate_enable }}\"" }
-    - { regexp: "ntpdate_flags",  val: "\"{{ ntpdate_flags }}\"" }
-    - { regexp: "ntpd_sync_on_start",  val: "\"{{ ntpd_sync_on_start }}\"" }
+    backup: "{{ timezone_rcconf_backup }}"
+  loop: "{{ timezone_rcconf }}"
 
 # EOF
 ...
