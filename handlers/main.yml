@@ -1,6 +1,6 @@
 ---
 # handlers for freebsd-timezone
-    
+
 - name: enable and start ntpdate
   service:
     name: ntpdate
