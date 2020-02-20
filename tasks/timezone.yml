@@ -1,16 +1,35 @@
 ---
 
 - name: "Create timezone {{ zoneinfo }}"
-  shell: if [ ! -e /etc/localtime ]; then tzsetup {{ zoneinfo }}; printf "changed"; fi
-  register: command_result
-  changed_when: command_result.stdout == "changed"
-  notify: adjust CMOS
+  block:
+    - name: "Create timezone {{ zoneinfo }}"
+      command:
+        cmd: "tzsetup {{ zoneinfo }}"
+        creates: /etc/localtime
+      register: command_result
+      notify: adjust CMOS
+  rescue:
+    - debug:
+        msg: "[ERROR] Create timezone {{ zoneinfo }} failed. End host."
+    - debug:
+        var: command_result
+    - meta: end_host
 
 - name: "Change timezone to {{ zoneinfo }}"
-  shell: if ( ! diff /usr/share/zoneinfo/{{ zoneinfo }} /etc/localtime ); then tzsetup {{ zoneinfo }}; fi
-  register: command_result
-  changed_when: command_result.stdout is search("differ")
-  notify: adjust CMOS
+  block:
+    - name: "Change timezone to {{ zoneinfo }}"
+      shell: "if ( ! diff /usr/share/zoneinfo/{{ zoneinfo }} /etc/localtime );
+              then tzsetup {{ zoneinfo }};
+              fi"
+      register: command_result
+      changed_when: command_result.stdout is search("differ")
+      notify: adjust CMOS
+  rescue:
+    - debug:
+        msg: "[ERROR] Change timezone to {{ zoneinfo }} failed. End host."
+    - debug:
+        var: command_result
+    - meta: end_host
 
 # EOF
 ...

@@ -1,5 +1,5 @@
 ---
-# tasks for freebsd-timezone
+# tasks for freebsd_timezone
 
 - import_tasks: rcconf.yml
   tags: tz_rcconf

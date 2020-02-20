@@ -1,17 +1,17 @@
 ---
-# handlers for freebsd-timezone
+# handlers for freebsd_timezone
 
 - name: enable and start ntpdate
   service:
     name: ntpdate
     state: started
-    enabled: yes
+    enabled: true
 
 - name: disable and stop ntpdate
   service:
     name: ntpdate
     state: stopped
-    enabled: no
+    enabled: false
 
 - name: restart ntpdate
   service:

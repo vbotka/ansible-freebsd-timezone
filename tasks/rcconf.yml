@@ -3,16 +3,16 @@
 - name: Configure /etc/rc.conf
   lineinfile:
     dest: "/etc/rc.conf"
-    regexp: "^{{ item.regexp }}"
-    line: "{{ item.regexp }}={{ item.val }}"
+    regexp: '^\s*{{ item.regexp }}\s*=(.*)$'
+    line: '{{ item.regexp }}={{ item.val }}'
     backup: "{{ timezone_rcconf_backup }}"
   loop: "{{ timezone_rcconf }}"
 
 - name: Configure ntpdate in /etc/rc.conf
   lineinfile:
     dest: "/etc/rc.conf"
-    regexp: "^{{ item.regexp }}"
-    line: "{{ item.regexp }}={{ item.val }}"
+    regexp: '^\s*{{ item.regexp }}\s*=(.*)$'
+    line: '{{ item.regexp }}={{ item.val }}'
     backup: "{{ timezone_rcconf_backup }}"
   loop: "{{ timezone_rcconf_ntpdate }}"
   notify: restart ntpdate
@@ -20,8 +20,8 @@
 - name: Enable ntpdate
   lineinfile:
     dest: "/etc/rc.conf"
-    regexp: "^ntpdate_enable"
-    line: "ntpdate_enable=\"YES\""
+    regexp: '^\s*ntpdate_enable\s*=(.*)$'
+    line: 'ntpdate_enable="YES"'
     backup: "{{ timezone_rcconf_backup }}"
   when: ntpdate_enable|lower == "yes"
   notify: enable and start ntpdate
@@ -29,8 +29,8 @@
 - name: Disable ntpdate
   lineinfile:
     dest: "/etc/rc.conf"
-    regexp: "^ntpdate_enable"
-    line: "ntpdate_enable=\"NO\""
+    regexp: '^\s*ntpdate_enable\s*=(.*)$'
+    line: 'ntpdate_enable="NO"'
     backup: "{{ timezone_rcconf_backup }}"
   when: ntpdate_enable|lower == "no"
   notify: disable and stop ntpdate
