@@ -5,15 +5,17 @@
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_timezone/) FreeBSD. Configure timezone.
 
+Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-timezone/issues). Contributions are welcome.
+
 
 ## Requirements
 
-No requiremenst.
+None.
 
 
 ## Variables
 
-TBD. Review the defaults and examples in vars.
+Review the defaults and examples in vars.
 
 
 ## Workflow
@@ -21,25 +23,25 @@ TBD. Review the defaults and examples in vars.
 1) Change shell to /bin/sh
 
 ```
-# ansible srv.example.com -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
+shell> ansible srv.example.com -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
 2) Install role
 
 ```
-# ansible-galaxy install vbotka.freebsd_timezone
+shell> ansible-galaxy install vbotka.freebsd_timezone
 ```
 
 3) Fit variables
 
 ```
-# editor vbotka.freebsd_timezone/vars/main.yml
+shell> editor vbotka.freebsd_timezone/vars/main.yml
 ```
 
 4) Create playbook
 
 ```
-# cat freebsd-timezone.yml
+shell> cat freebsd-timezone.yml
 
 - hosts: srv.example.com
   roles:
@@ -49,7 +51,7 @@ TBD. Review the defaults and examples in vars.
 5) Configure the timezone
 
 ```
-ansible-playbook freebsd-timezone.yml
+shell> ansible-playbook freebsd-timezone.yml
 ```
 
 
