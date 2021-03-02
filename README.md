@@ -1,11 +1,12 @@
 # freebsd_timezone
 
-[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-timezone.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-timezone)
-[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_timezone)[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-timezone.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-timezone)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_timezone/) FreeBSD. Configure timezone.
 
-Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-timezone/issues). Contributions are welcome.
+Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-timezone/issues).
+
+[Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
 
 ## Requirements
