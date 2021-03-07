@@ -1,9 +1,20 @@
 ---
-# vars for freebsd-timezone
+# vars for freebsd_timezone
 
-#zoneinfo: "UTC"
-#zoneinfo: "Europe/London"
-#zoneinfo_path: "/usr/share/zoneinfo"
-#ntpdate_enable: "YES"
-#ntpdate_flags: "-b"
-#ntpd_sync_on_start: "NO"
+# Examples - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# timezone_rcconf_backup: false
+# zoneinfo: "UTC"
+# zoneinfo: "Europe/London"
+# zoneinfo_path: "/usr/share/zoneinfo"
+# ntpdate_enable: "YES"
+# ntpdate_flags: "-b"
+# ntpd_sync_on_start: "NO"
+
+# Take variables from the role freebsd_postinstall - - - - - - - - - - - - - - - - - - - -
+# zoneinfo: "{{ fp_zoneinfo }}"
+# ntpdate_enable: "{{ fp_ntpdate_enable }}"
+# ntpdate_flags: "{{ fp_ntpdate_flags }}"
+# ntpd_sync_on_start: "{{ fp_ntpd_sync_on_start }}"
+
+# EOF
+...
