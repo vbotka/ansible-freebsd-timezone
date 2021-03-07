@@ -3,27 +3,24 @@
 
 # details about zoneinfo in man tzsetup
 zoneinfo: "UTC"
-#zoneinfo: "Europe/London"
+# zoneinfo: "Europe/London"
 zoneinfo_path: "/usr/share/zoneinfo"
 
 # Run ntpdate to sync date on boot
-ntpdate_enable: "YES"
+ntpdate_enable: "NO"
 
+# rc.conf
+timezone_rcconf_backup: true
 # -b Force the time to be stepped using the settimeofday(2) system call,
 # rather than slewed (default) using the adjtime(2) system call.  This
 # option should be used when called from a startup file at boot time.
 ntpdate_flags: "-b"
-
-# Sync time on ntpd startup
-ntpd_sync_on_start: "NO"
-
-# rc.conf
-timezone_rcconf_backup: true
-timezone_rcconf:
-  - {regexp: 'ntpd_sync_on_start', val: '"{{ ntpd_sync_on_start }}"'}
-
 timezone_rcconf_ntpdate:
   - {regexp: 'ntpdate_flags', val: '"{{ ntpdate_flags }}"'}
+# Sync time on ntpd startup
+ntpd_sync_on_start: "NO"
+timezone_rcconf:
+  - {regexp: 'ntpd_sync_on_start', val: '"{{ ntpd_sync_on_start }}"'}
 
 # EOF
 ...
