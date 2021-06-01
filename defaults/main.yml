@@ -1,10 +1,12 @@
 ---
 # defaults for freebsd_timezone
 
+timezone_debug: false
+
 # details about zoneinfo in man tzsetup
-zoneinfo: "UTC"
+zoneinfo: UTC
 # zoneinfo: "Europe/London"
-zoneinfo_path: "/usr/share/zoneinfo"
+zoneinfo_path: /usr/share/zoneinfo
 
 # Run ntpdate to sync date on boot
 ntpdate_enable: "NO"
@@ -16,11 +18,11 @@ timezone_rcconf_backup: true
 # option should be used when called from a startup file at boot time.
 ntpdate_flags: "-b"
 timezone_rcconf_ntpdate:
-  - {regexp: 'ntpdate_flags', val: '"{{ ntpdate_flags }}"'}
+  - {regexp: ntpdate_flags, val: '"{{ ntpdate_flags }}"'}
 # Sync time on ntpd startup
 ntpd_sync_on_start: "NO"
 timezone_rcconf:
-  - {regexp: 'ntpd_sync_on_start', val: '"{{ ntpd_sync_on_start }}"'}
+  - {regexp: ntpd_sync_on_start, val: '"{{ ntpd_sync_on_start }}"'}
 
 # EOF
 ...

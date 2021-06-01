@@ -1,16 +1,16 @@
 ---
 
 - name: Configure /etc/rc.conf
-  lineinfile:
-    dest: "/etc/rc.conf"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
     regexp: '^\s*{{ item.regexp }}\s*=(.*)$'
     line: '{{ item.regexp }}={{ item.val }}'
     backup: "{{ timezone_rcconf_backup }}"
   loop: "{{ timezone_rcconf }}"
 
 - name: Configure ntpdate in /etc/rc.conf
-  lineinfile:
-    dest: "/etc/rc.conf"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
     regexp: '^\s*{{ item.regexp }}\s*=(.*)$'
     line: '{{ item.regexp }}={{ item.val }}'
     backup: "{{ timezone_rcconf_backup }}"
@@ -18,8 +18,8 @@
   notify: restart ntpdate
 
 - name: Enable ntpdate
-  lineinfile:
-    dest: "/etc/rc.conf"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
     regexp: '^\s*ntpdate_enable\s*=(.*)$'
     line: 'ntpdate_enable="YES"'
     backup: "{{ timezone_rcconf_backup }}"
@@ -27,8 +27,8 @@
   notify: enable and start ntpdate
 
 - name: Disable ntpdate
-  lineinfile:
-    dest: "/etc/rc.conf"
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
     regexp: '^\s*ntpdate_enable\s*=(.*)$'
     line: 'ntpdate_enable="NO"'
     backup: "{{ timezone_rcconf_backup }}"
