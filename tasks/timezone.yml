@@ -21,7 +21,8 @@
       ansible.builtin.debug:
         var: command_result
       when: timezone_debug|bool
-    - meta: end_host
+    - name: "rescue: End host"
+      meta: end_host
 
 - name: "Change timezone to {{ zoneinfo }}"
   block:
@@ -46,7 +47,8 @@
       ansible.builtin.debug:
         var: command_result
       when: timezone_debug|bool
-    - meta: end_host
+    - name: "rescue: End host"
+      meta: end_host
 
 # EOF
 ...
