@@ -1,0 +1,40 @@
+---
+
+- block:
+    - name: "stat: Get zoneinfo"
+      ansible.builtin.command: cat /var/db/zoneinfo
+      register: zoneinfo_out
+      changed_when: false
+    - name: "stat: Debug zoneinfo"
+      ansible.builtin.debug:
+        var: bsd_tz_stat_zoneinfo
+      run_once: true
+  rescue:
+    - name: "stat: rescue: Debug"
+      ansible.builtin.debug:
+        msg: |
+          [ERR] Get zoneinfo failed:
+          {{ ansible_failed_result }}
+          End host.
+    - name: "stat: rescue: End host"
+      meta: end_host
+
+- block:
+    - name: "stat: Get ntpdate status"
+      ansible.builtin.command: service ntpdate onestatus
+      register: ntpdate_out
+      changed_when: false
+      failed_when: ntpdate_out.rc > 1  # rc=1 if service not runnung
+    - name: "stat: Debug ntpdate status"
+      ansible.builtin.debug:
+        var: bsd_tz_stat_ntpdate
+      run_once: true
+  rescue:
+    - name: "stat: rescue: Debug"
+      ansible.builtin.debug:
+        msg: "[ERR] Get zoneinfo failed: {{ ansible_failed_result }}. End host."
+    - name: "stat: rescue: End host"
+      meta: end_host
+
+# EOF
+...
