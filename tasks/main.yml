@@ -2,10 +2,14 @@
 # tasks for freebsd_timezone
 
 - import_tasks: rcconf.yml
-  tags: tz_rcconf
+  tags: bsd_tz_rcconf
 
 - import_tasks: timezone.yml
-  tags: tz_timezone
+  tags: bsd_tz_timezone
+
+- import_tasks: stat.yml
+  when: bsd_tz_stat|bool
+  tags: bsd_tz_stat
 
 # EOF
 ...

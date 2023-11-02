@@ -1,28 +1,49 @@
 ---
-# defaults for freebsd_timezone
+# defaults freebsd_timezone
 
-timezone_debug: false
+bsd_tz_debug: false
+bsd_tz_backup_conf: false
 
-# details about zoneinfo in man tzsetup
-zoneinfo: UTC
-# zoneinfo: "Europe/London"
-zoneinfo_path: /usr/share/zoneinfo
+# See man tzsetup
+bsd_tz_zoneinfo_path: /usr/share/zoneinfo
+bsd_tz_zoneinfo: UTC                # +0    UTC  (Universal Time Coordinated)
+# bsd_tz_zoneinfo: US/Pacific       # -8    PST  (Pacific Standard Time)
+# bsd_tz_zoneinfo: US/Mountain      # -7    MST  (Mountain Standard Time)
+# bsd_tz_zoneinfo: US/Central       # -6    CST  (Central Standard Time)
+# bsd_tz_zoneinfo: US/Eastern       # -5    EST  (Eastern Standard Time)
+# bsd_tz_zoneinfo: Europe/London    # +0    WET  (Western European Time)
+# bsd_tz_zoneinfo: Europe/Warsaw    # +1    CET  (Central European Time)
+# bsd_tz_zoneinfo: Europe/Kyiv      # +2    EET  (Eastern European Time)
+# bsd_tz_zoneinfo: Europe/Istanbul  # +3    EST  (Eastern European Summer Time)
+# bsd_tz_zoneinfo: Asia/Yerevan     # +4    AMT  (Armenia Standard Time)
+# bsd_tz_zoneinfo: Asia/Calcutta    # +5.5  IST  (India Standard Time)
+# bsd_tz_zoneinfo: Asia/Almaty      # +6    ALMT (Alma-Ata Time)
+# bsd_tz_zoneinfo: Asia/Bangkok     # +7    ICT  (Indochina Time)
+# bsd_tz_zoneinfo: Asia/Taipei      # +8    CST  (China Standard Time)
+# bsd_tz_zoneinfo: Australia/West   # +8    AWST (Australian Western Standard Time)
+# bsd_tz_zoneinfo: Asia/Tokyo       # +9    JST  (Japan Standard Time)
+# bsd_tz_zoneinfo: Australia/NSW    # +10   AEST (Australian Eastern Standard Time)
+# bsd_tz_zoneinfo: Pacific/Auckland # +12   NZST (New Zealand Standard Time)
 
-# Run ntpdate to sync date on boot
-ntpdate_enable: "NO"
-
-# rc.conf
-timezone_rcconf_backup: true
-# -b Force the time to be stepped using the settimeofday(2) system call,
+# ntpdate
+# (After a suitable period of mourning, the ntpdate utility is to be
+# retired from this distribution)
+bsd_tz_ntpdate_enable: false
+# -b force the time to be stepped using the settimeofday(2) system call,
 # rather than slewed (default) using the adjtime(2) system call.  This
 # option should be used when called from a startup file at boot time.
-ntpdate_flags: "-b"
-timezone_rcconf_ntpdate:
-  - {regexp: ntpdate_flags, val: '"{{ ntpdate_flags }}"'}
-# Sync time on ntpd startup
-ntpd_sync_on_start: "NO"
-timezone_rcconf:
-  - {regexp: ntpd_sync_on_start, val: '"{{ ntpd_sync_on_start }}"'}
+bsd_tz_ntpdate_flags: '-b'
+bsd_tz_rcconf:
+  - {key: ntpdate_flags, value: "{{ bsd_tz_ntpdate_flags }}"}
+
+# Status
+bsd_tz_stat: false
+bsd_tz_stat_zoneinfo: "{{ dict(ansible_play_hosts|
+                               zip(ansible_play_hosts|
+                                   map('extract', hostvars, ['zoneinfo_out', 'stdout']))) }}"
+bsd_tz_stat_ntpdate: "{{ dict(ansible_play_hosts|
+                              zip(ansible_play_hosts|
+                                  map('extract', hostvars, ['ntpdate_out', 'stdout']))) }}"
 
 # EOF
 ...
