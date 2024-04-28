@@ -1,29 +1,27 @@
 ---
-
 - block:
-    - name: "timezone: Create timezone {{ bsd_tz_zoneinfo }}"
+    - name: "Timezone: Create timezone {{ bsd_tz_zoneinfo }}"
       ansible.builtin.command:
         cmd: >
           tzsetup {{ bsd_tz_zoneinfo }}
         creates: /etc/localtime
       register: command_out
       notify: adjust CMOS
-    - name: "timezone: Debug command_result"
+    - name: "Timezone: Debug command_result"
       ansible.builtin.debug:
         var: command_out
       when: bsd_tz_debug|bool
   rescue:
-    - name: "timezone: rescue: Debug"
+    - name: "Timezone: rescue: Debug"
       ansible.builtin.debug:
         msg: |
           [ERR] Create timezone {{ bsd_tz_zoneinfo }} failed:
           {{ ansible_failed_result }}
           End host.
-    - name: "timezone: rescue: End host"
-      meta: end_host
-
+    - name: "Timezone: rescue: End host"
+      ansible.builtin.meta: end_host
 - block:
-    - name: "timezone: Change timezone to {{ bsd_tz_zoneinfo }}"
+    - name: "Timezone: Change timezone to {{ bsd_tz_zoneinfo }}"
       ansible.builtin.shell:
         cmd: >
           if ( ! diff /usr/share/zoneinfo/{{ bsd_tz_zoneinfo }} /etc/localtime );
@@ -32,19 +30,16 @@
       register: command_out
       changed_when: command_out.stdout|d('') is search('differ')
       notify: adjust CMOS
-    - name: "timezone: Debug command_out"
+    - name: "Timezone: Debug command_out"
       ansible.builtin.debug:
         var: command_out
       when: bsd_tz_debug|bool
   rescue:
-    - name: "timezone: rescue: Debug"
+    - name: "Timezone: rescue: Debug"
       ansible.builtin.debug:
         msg: |
           [ERR] Change timezone to {{ bsd_tz_zoneinfo }} failed:
           {{ ansible_failed_result }}
           End host.
-    - name: "timezone: rescue: End host"
-      meta: end_host
-
-# EOF
-...
+    - name: "Timezone: rescue: End host"
+      ansible.builtin.meta: end_host

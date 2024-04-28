@@ -12,7 +12,7 @@ galaxy_info:
     - name: FreeBSD
       versions:
         - 13.3
-         -14.0
+        - 14.0
   galaxy_tags:
     - timezone
     - ntpdate

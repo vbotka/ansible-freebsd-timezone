@@ -1,31 +1,29 @@
 ---
-
-- name: "rcconf: Configure ntpdate in /etc/rc.conf"
+- name: "Rcconf: Configure ntpdate in /etc/rc.conf"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ bsd_tz_backup_conf }}"
   loop: "{{ bsd_tz_rcconf }}"
   notify: restart ntpdate
 
-- name: "rcconf: Enable and start ntpdate"
+- name: "Rcconf: Enable and start ntpdate"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*ntpdate_enable\s*=(.*)$'
-    line: 'ntpdate_enable="YES"'
+    regexp: ^\s*ntpdate_enable\s*=(.*)$
+    line: ntpdate_enable="YES"
     backup: "{{ bsd_tz_backup_conf }}"
   notify: enable and start ntpdate
   when: bsd_tz_ntpdate_enable|bool
 
-- name: "rcconf: Disable and stop ntpdate"
+- name: "Rcconf: Disable and stop ntpdate"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*ntpdate_enable\s*=(.*)$'
-    line: 'ntpdate_enable="NO"'
+    regexp: ^\s*ntpdate_enable\s*=(.*)$
+    line: ntpdate_enable="NO"
     backup: "{{ bsd_tz_backup_conf }}"
   notify: disable and stop ntpdate
   when: not bsd_tz_ntpdate_enable|bool
 
 # EOF
-...
