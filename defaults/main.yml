@@ -6,7 +6,7 @@ bsd_tz_backup_conf: false
 
 # See man tzsetup
 bsd_tz_zoneinfo_path: /usr/share/zoneinfo
-bsd_tz_zoneinfo: UTC                # +0    UTC  (Universal Time Coordinated)
+bsd_tz_zoneinfo: UTC # +0    UTC  (Universal Time Coordinated)
 # bsd_tz_zoneinfo: US/Pacific       # -8    PST  (Pacific Standard Time)
 # bsd_tz_zoneinfo: US/Mountain      # -7    MST  (Mountain Standard Time)
 # bsd_tz_zoneinfo: US/Central       # -6    CST  (Central Standard Time)
@@ -32,18 +32,17 @@ bsd_tz_ntpdate_enable: false
 # -b force the time to be stepped using the settimeofday(2) system call,
 # rather than slewed (default) using the adjtime(2) system call.  This
 # option should be used when called from a startup file at boot time.
-bsd_tz_ntpdate_flags: '-b'
+bsd_tz_ntpdate_flags: -b
 bsd_tz_rcconf:
-  - {key: ntpdate_flags, value: "{{ bsd_tz_ntpdate_flags }}"}
+  - { key: ntpdate_flags, value: "{{ bsd_tz_ntpdate_flags }}" }
 
 # Status
 bsd_tz_stat: false
-bsd_tz_stat_zoneinfo: "{{ dict(ansible_play_hosts|
-                               zip(ansible_play_hosts|
+bsd_tz_stat_zoneinfo: "{{ dict(ansible_play_hosts |
+                               zip(ansible_play_hosts |
                                    map('extract', hostvars, ['zoneinfo_out', 'stdout']))) }}"
-bsd_tz_stat_ntpdate: "{{ dict(ansible_play_hosts|
-                              zip(ansible_play_hosts|
+bsd_tz_stat_ntpdate: "{{ dict(ansible_play_hosts |
+                              zip(ansible_play_hosts |
                                   map('extract', hostvars, ['ntpdate_out', 'stdout']))) }}"
 
 # EOF
-...
