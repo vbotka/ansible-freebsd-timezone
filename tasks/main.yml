@@ -1,14 +1,17 @@
 ---
 # tasks for freebsd_timezone
 
-- ansible.builtin.import_tasks: rcconf.yml
+- name: Import rcconf.yml
+  ansible.builtin.import_tasks: rcconf.yml
   tags: bsd_tz_rcconf
 
-- ansible.builtin.import_tasks: timezone.yml
+- name: Import timezone.yml
+  ansible.builtin.import_tasks: timezone.yml
   tags: bsd_tz_timezone
 
-- ansible.builtin.import_tasks: stat.yml
-  when: bsd_tz_stat|bool
+- name: Import stat.yml
+  ansible.builtin.import_tasks: stat.yml
+  when: bsd_tz_stat | bool
   tags: bsd_tz_stat
 
 # EOF

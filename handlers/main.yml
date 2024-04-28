@@ -2,26 +2,30 @@
 # handlers freebsd_timezone
 
 - name: Enable and start ntpdate
+  listen: enable and start ntpdate
   ansible.builtin.service:
     name: ntpdate
     state: started
     enabled: true
 
 - name: Disable and stop ntpdate
+  listen: disable and stop ntpdate
   ansible.builtin.service:
     name: ntpdate
     state: stopped
     enabled: false
 
 - name: Restart ntpdate
+  listen: restart ntpdate
   ansible.builtin.service:
     name: ntpdate
     state: restarted
-  when: bsd_tz_ntpdate_enable|bool
+  when: bsd_tz_ntpdate_enable | bool
 
 # Update the local time CMOS clock and kernel machdep.adjkerntz
 # variable when timezone changes occur
-- name: Adjust CMOS
+- name: Adjust CMOS # noqa: no-changed-when
+  listen: Adjust CMOS
   ansible.builtin.command:
     cmd: adjkerntz -a
 

@@ -15,7 +15,7 @@
     line: ntpdate_enable="YES"
     backup: "{{ bsd_tz_backup_conf }}"
   notify: enable and start ntpdate
-  when: bsd_tz_ntpdate_enable|bool
+  when: bsd_tz_ntpdate_enable | bool
 
 - name: "Rcconf: Disable and stop ntpdate"
   ansible.builtin.lineinfile:
@@ -24,6 +24,6 @@
     line: ntpdate_enable="NO"
     backup: "{{ bsd_tz_backup_conf }}"
   notify: disable and stop ntpdate
-  when: not bsd_tz_ntpdate_enable|bool
+  when: not bsd_tz_ntpdate_enable | bool
 
 # EOF

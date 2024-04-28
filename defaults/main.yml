@@ -38,7 +38,11 @@ bsd_tz_rcconf:
 
 # Status
 bsd_tz_stat: false
-bsd_tz_stat_zoneinfo: "{{ dict(ansible_play_hosts| zip(ansible_play_hosts| map('extract', hostvars, ['zoneinfo_out', 'stdout']))) }}"
-bsd_tz_stat_ntpdate: "{{ dict(ansible_play_hosts| zip(ansible_play_hosts| map('extract', hostvars, ['ntpdate_out', 'stdout']))) }}"
+bsd_tz_stat_zoneinfo: "{{ dict(ansible_play_hosts |
+                               zip(ansible_play_hosts |
+                                   map('extract', hostvars, ['zoneinfo_out', 'stdout']))) }}"
+bsd_tz_stat_ntpdate: "{{ dict(ansible_play_hosts |
+                              zip(ansible_play_hosts |
+                                  map('extract', hostvars, ['ntpdate_out', 'stdout']))) }}"
 
 # EOF

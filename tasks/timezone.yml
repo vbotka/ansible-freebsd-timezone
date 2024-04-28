@@ -1,5 +1,7 @@
 ---
-- block:
+- name: Create timezone
+  block:
+
     - name: "Timezone: Create timezone {{ bsd_tz_zoneinfo }}"
       ansible.builtin.command:
         cmd: >
@@ -10,8 +12,10 @@
     - name: "Timezone: Debug command_result"
       ansible.builtin.debug:
         var: command_out
-      when: bsd_tz_debug|bool
+      when: bsd_tz_debug | bool
+
   rescue:
+
     - name: "Timezone: rescue: Debug"
       ansible.builtin.debug:
         msg: |
@@ -20,7 +24,10 @@
           End host.
     - name: "Timezone: rescue: End host"
       ansible.builtin.meta: end_host
-- block:
+
+- name: Change timezone
+  block:
+
     - name: "Timezone: Change timezone to {{ bsd_tz_zoneinfo }}"
       ansible.builtin.shell:
         cmd: >
@@ -33,8 +40,10 @@
     - name: "Timezone: Debug command_out"
       ansible.builtin.debug:
         var: command_out
-      when: bsd_tz_debug|bool
+      when: bsd_tz_debug | bool
+
   rescue:
+
     - name: "Timezone: rescue: Debug"
       ansible.builtin.debug:
         msg: |
