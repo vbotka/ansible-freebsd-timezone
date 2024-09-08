@@ -1,8 +1,13 @@
 ---
 # vars for freebsd_timezone
 
-# Take variables from the role freebsd_postinstall
-#
+# Example 1.
+# bsd_tz_zoneinfo: Europe/Sarajevo
+# bsd_tz_ntpdate_enable: False
+# bsd_tz_ntpdate_flags: -b
+
+# Example 2.
+# Take the variables from the role freebsd_postinstall
 # bsd_tz_zoneinfo: "{{ fp_zoneinfo }}"
 # bsd_tz_ntpdate_enable: "{{ fp_ntpdate_enable }}"
 # bsd_tz_ntpdate_flags: "{{ fp_ntpdate_flags }}"

@@ -1,6 +1,11 @@
 ---
 # tasks for freebsd_timezone
 
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
+  when: bsd_tz_debug | bool
+  tags: bsd_tz_debug
+
 - name: Import rcconf.yml
   ansible.builtin.import_tasks: rcconf.yml
   tags: bsd_tz_rcconf

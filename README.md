@@ -46,6 +46,23 @@ shell> cat freebsd-timezone.yml
 
 * Fit the variables to you needs
 
+* Check syntax
+
+```bash
+shell> ansible-playbook freebsd-timezone.yml --syntax-check
+```
+
+* Display variables
+
+```bash
+shell> ansible-playbook freebsd-timezone.yml -t bsd_tz_debug -e bsd_tz_debug=true
+```
+
+* Dry-run the play and display the differences
+
+```bash
+shell> ansible-playbook freebsd-timezone.yml --check --diff
+```
 
 * Configure the timezone
 
