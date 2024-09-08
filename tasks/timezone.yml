@@ -9,6 +9,7 @@
         creates: /etc/localtime
       register: command_out
       notify: adjust CMOS
+
     - name: "Timezone: Debug command_result"
       ansible.builtin.debug:
         var: command_out
@@ -22,6 +23,7 @@
           [ERR] Create timezone {{ bsd_tz_zoneinfo }} failed:
           {{ ansible_failed_result }}
           End host.
+
     - name: "Timezone: rescue: End host"
       ansible.builtin.meta: end_host
 
@@ -35,8 +37,9 @@
           then tzsetup {{ bsd_tz_zoneinfo }};
           fi
       register: command_out
-      changed_when: command_out.stdout|d('') is search('differ')
+      changed_when: command_out.stdout | d('') is search('differ')
       notify: adjust CMOS
+
     - name: "Timezone: Debug command_out"
       ansible.builtin.debug:
         var: command_out
@@ -50,5 +53,8 @@
           [ERR] Change timezone to {{ bsd_tz_zoneinfo }} failed:
           {{ ansible_failed_result }}
           End host.
+
     - name: "Timezone: rescue: End host"
       ansible.builtin.meta: end_host
+
+# EOF

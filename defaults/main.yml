@@ -1,5 +1,6 @@
 ---
 # defaults freebsd_timezone
+bsd_tz_role_version: 2.6.1
 
 bsd_tz_debug: false
 bsd_tz_backup_conf: false
@@ -29,6 +30,7 @@ bsd_tz_zoneinfo: UTC # +0    UTC  (Universal Time Coordinated)
 # (After a suitable period of mourning, the ntpdate utility is to be
 # retired from this distribution)
 bsd_tz_ntpdate_enable: false
+
 # -b force the time to be stepped using the settimeofday(2) system call,
 # rather than slewed (default) using the adjtime(2) system call.  This
 # option should be used when called from a startup file at boot time.
