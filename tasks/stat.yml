@@ -6,6 +6,7 @@
       ansible.builtin.command: cat /var/db/zoneinfo
       register: zoneinfo_out
       changed_when: false
+
     - name: "Stat: Debug zoneinfo"
       ansible.builtin.debug:
         var: bsd_tz_stat_zoneinfo
@@ -27,6 +28,7 @@
       ansible.builtin.command: service ntpdate onestatus
       register: ntpdate_out
       changed_when: false
+
       failed_when: ntpdate_out.rc > 1 # rc=1 if service not runnung
     - name: "Stat: Debug ntpdate status"
       ansible.builtin.debug:
@@ -41,3 +43,5 @@
           [ERR] Get zoneinfo failed: {{ ansible_failed_result }}. End host.
     - name: "Stat: rescue: End host"
       ansible.builtin.meta: end_host
+
+# EOF
