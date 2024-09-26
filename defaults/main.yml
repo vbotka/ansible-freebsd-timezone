@@ -1,6 +1,6 @@
 ---
 # defaults freebsd_timezone
-bsd_tz_role_version: 2.6.1
+bsd_tz_role_version: 2.6.2
 
 bsd_tz_debug: false
 bsd_tz_backup_conf: false
