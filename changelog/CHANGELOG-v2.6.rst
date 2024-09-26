@@ -3,27 +3,22 @@ vbotka.freebsd_timezone 2.6 Release Notes
 =========================================
 
 .. contents:: Topics
-# BEGIN Commits 2.6.2
-- Update python 3.11 in .travis.yml
-- Rename changelogs to changelog.
-# END Commits 2.6.2
-# BEGIN Release notes 2.6.2
+
+
 2.6.2
 =====
+
 Release Summary
 ---------------
+Maintenance update.
+
 Major Changes
 -------------
+
 Minor Changes
 -------------
 - Update python 3.11 in .travis.yml
 - Rename changelogs to changelog.
-
-Bugfixes
---------
-Breaking Changes / Porting Guide
---------------------------------
-# END Release notes 2.6.2
 
 
 2.6.1
